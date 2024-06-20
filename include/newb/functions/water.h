@@ -13,7 +13,6 @@ float calculateFresnel(float cosR, float r0) {
   return r0 + (1.0 - r0) * a2 * a2 * a;
 }
 
-
 vec3 wReflection(vec3 viewDir, vec3 wPos, float rainFactor, float t, vec4 FOG_COLOR, vec3 zenithCol, vec3 horizonCol, vec3 horizonEdgeCol) {
 
     vec3 wRefl;
@@ -28,10 +27,10 @@ vec3 wReflection(vec3 viewDir, vec3 wPos, float rainFactor, float t, vec4 FOG_CO
         vec4 aurora = renderAurora(reflPos.xyy, t, rainFactor, FOG_COLOR.rgb);
         wRefl += 4.0*aurora.rgb*aurora.a*fade;
 #endif
-//adjust 0.5 to ur preference
+//adjust 0.5 to your preference
 #if NL_CLOUD_TYPE == 2
         vec4 clouds = renderClouds(viewDir, reflPos.xyy, rainFactor, t,zenithCol, FOG_COLOR.rgb );
-        wRefl = mix(wRefl, 0.4*clouds.rgb, clouds.a*fade);
+        wRefl = mix(wRefl, 0.45*clouds.rgb, clouds.a*fade);
 #elif NL_CLOUD_TYPE == 1
         vec4 clouds = renderCloudsSimple(reflPos.xyy, t, rainFactor, zenithCol, horizonCol, horizonEdgeCol);
         wRefl = mix(wRefl, NL_WATER_CLOUD_REFL*clouds.rgb, clouds.a*fade);
@@ -41,7 +40,6 @@ vec3 wReflection(vec3 viewDir, vec3 wPos, float rainFactor, float t, vec4 FOG_CO
 
     return wRefl;
 }
-
 
 vec4 nlWater(
   inout vec3 wPos, inout vec4 color, vec4 COLOR, vec3 viewDir, vec3 light, vec3 cPos, vec3 tiledCpos,
@@ -69,11 +67,6 @@ vec4 nlWater(
     // torch light reflection
     waterRefl += torchColor * NL_TORCH_INTENSITY * (lit.x * lit.x + lit.x) * bump * 10.0;
 
-    // Fake sun reflection
-    vec3 sunDir = normalize( vec3(1.000, 0.627, 0.141)); // Assume the sun is directly overhead
-    vec3 sunReflDir = reflect(-sunDir,  vec3(1.000, 0.627, 0.141));
-    float sunIntensity = max(dot(viewDir, sunReflDir), 0.0);
-    waterRefl += vec3(1.0, 0.9, 0.7) * sunIntensity * sunIntensity * 10.0; // Sun color and intensity
 
     if (fractCposY > 0.8 || fractCposY < 0.9) { // flat plane
       waterRefl *= 1.0 - clamp(wPos.y, 0.0, 0.66);
