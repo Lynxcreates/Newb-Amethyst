@@ -91,7 +91,7 @@ float cloudDf(vec3 pos, float rain) {
   float b = 1.0 - 1.9 * smoothstep(NL_CLOUD2_SHAPE, 2.0 - NL_CLOUD2_SHAPE, 2.0 * abs(pos.y - 0.5));
 
   // Add noise to make the clouds fluffy
-  float noiseFactor = 0.4;  // Adjust this factor to control the amount of fluffiness
+  float noiseFactor = NL_CLOUD_FLUFFY;  // Adjust this factor to control the amount of fluffiness
   float fluffiness = noiseFactor * (snoise(pos.xz * 3.0 + pos.y * 2.0) - 0.5);
 
   return smoothstep(0.2, 1.0, (n + fluffiness) * b);
