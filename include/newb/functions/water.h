@@ -73,7 +73,7 @@ vec4 nlWater(
     vec3 sunDir = normalize( vec3(1.000, 0.627, 0.141)); // Assume the sun is directly overhead
     vec3 sunReflDir = reflect(-sunDir,  vec3(1.000, 0.627, 0.141));
     float sunIntensity = max(dot(viewDir, sunReflDir), 0.0);
-    waterRefl += vec3(1.0, 0.9, 0.7) * sunIntensity * sunIntensity * 30.0; // Sun color and intensity
+    waterRefl += vec3(1.0, 0.9, 0.7) * sunIntensity * sunIntensity * 10.0; // Sun color and intensity
 
     if (fractCposY > 0.8 || fractCposY < 0.9) { // flat plane
       waterRefl *= 1.0 - clamp(wPos.y, 0.0, 0.66);
