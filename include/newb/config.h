@@ -62,7 +62,7 @@
 
 /* Fog */
 #define NL_FOG_TYPE 3             // 0:no fog, 1:vanilla, 2:smoother vanilla 
-#define NL_MIST_DENSITY 1.5     // 0.0: no fog, 1.0: misty
+#define NL_MIST_DENSITY 1.0     // 0.0: no fog, 1.0: misty
 #define NL_RAIN_MIST_OPACITY 1.42// [toggle] 0.04 very subtle ~ 0.5 thick rain mist blow
 
 /* Sky colors - zenith=top, horizon=bottom */
@@ -90,8 +90,8 @@
 
 /* Ore glow intensity */
 #define NL_GLOW_TEX 8.0  // 0.4 weak ~ 8.0 bright
-#define NL_GLOW_SHIMMER  // [toggle] shimmer effect
-#define NL_GLOW_LEAK 0.8 // [toggle] 0.08 subtle ~ 1.0 100% brightness of NL_GLOW_TEX
+//#define NL_GLOW_SHIMMER  // [toggle] shimmer effect
+#define NL_GLOW_LEAK 1.0 // [toggle] 0.08 subtle ~ 1.0 100% brightness of NL_GLOW_TEX
 
 /* Waving */
 #define NL_PLANTS_WAVE 0.2    // [toggle] 0.02 gentle ~ 0.4 violent
@@ -138,7 +138,7 @@
 #define NL_CLOUD2_DENSITY 100.0       // 1.0 blurry ~ 100.0 sharp
 #define NL_CLOUD2_VELOCIY 1.1        // 0.0 static ~ 4.0 very fast
 //#define NL_CLOUD2_MULTILAYER       // [toggle] extra cloud layer
-
+#define NL_CLOUD_FLUFFY 0.3
 /* Aurora settings */
 #define NL_AURORA 20.0           // [toggle] 0.4 dim ~ 4.0 very bright
 #define NL_AURORA_VELOCITY 0.15 // 0.0 static ~ 0.3 very fast
@@ -155,7 +155,7 @@
 #define NL_SUNMOON_SIZE 1.2     // 0.3 tiny ~ 4.0 massive
 
 /* Fake godrays during sunrise/sunset */
-#define NL_GODRAY 0.8 // [toggle] 0.1 subtle ~ 0.8 strong
+#define NL_GODRAY 0.1 // [toggle] 0.1 subtle ~ 0.8 strong
 
 /* Sky reflection */
 #define NL_GROUND_REFL 0.0       // [toggle] 0.2 slightly reflective ~ 1.0 fully reflect sky 
@@ -165,7 +165,7 @@
 //#define NL_ENDSKY_TYPE  2
 //#define SUN_BLOOM
 /* -------- CONFIG ENDS HERE ----------- */
-
+#define NL_SHADOW_SIDES 0.5
 /*
   EDITING CONFIG FOR SUBPACKS:
   
@@ -179,14 +179,66 @@
 #ifdef R
 #undef NL_GROUND_REFL 0.0       // [toggle] 0.2 
 #define NL_GROUND_REFL 1.2      // [toggle] 0.2 
-#define NL_WATER_CLOUD_REFLECTION
+//#define NL_WATER_CLOUD_REFLECTION 0.5
 #undef NL_AURORA_VELOCITY 0.03
 #define NL_AURORA_VELOCITY 0.3
+//#undef NL_CLOUD_TYPE 
+//#define NL_CLOUD_TYPE 1
+#endif
+#ifdef HORROR
+#undef NL_CLOUD2_STEPS 8
+#define NL_CLOUD2_STEPS 12
+#undef NL_TONEMAP_TYPE 4   // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
+#undef NL_CONSTRAST 0.8    // 0.3 low ~ 2.0 high
+#undef NL_EXPOSURE 1.11   // [toggle] 0.5 dark ~ 3.0 bright
+#undef NL_SATURATION 1.2 // [toggle] 0.0 grayscale ~
+#define NL_TONEMAP_TYPE 4   // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
+#define NL_CONSTRAST 1.0    // 0.3 low ~ 2.0 high
+#define NL_EXPOSURE 1.3   // [toggle] 0.5 dark ~ 3.0 bright
+#define NL_SATURATION 1.3 // [toggle] 0.0 grayscale ~  
+#undef NL_OVERWORLD_TORCH_COL
+#define NL_OVERWORLD_TORCH_COL  vec3(1.000, 0.682, 0.271)
+#undef NL_CLOUD_FLUFFY
+#define NL_CLOUD_FLUFFY	 0.4
+#undef NL_CLOUD2_SHAPE 0.41
+#define NL_CLOUD2_SHAPE 0.5
+#undef NL_SHADOW_SIDES 0.3
+#define NL_SHADOW_SIDES 0.3
+#endif
+#ifdef FANTASY
+#undef NL_TORCH_INTENSITY 1.08
+#define NL_TORCH_INTENSITY 1.6
+//#undef NL_OVERWORLD_TORCH_COL
+//#define NL_OVERWORLD_TORCH_COL    
+#undef NL_TONEMAP_TYPE 4   // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
+#undef NL_CONSTRAST 0.8    // 0.3 low ~ 2.0 high
+#undef NL_EXPOSURE 1.11   // [toggle] 0.5 dark ~ 3.0 bright
+#undef NL_SATURATION 1.2 // [toggle] 0.0 grayscale ~ 
+//#undef NL_CLOUD2_SHAPE 0.0
+//#define NL_CLOUD2_SHAPE 0.9
+#undef NL_CLOUD2_STEPS 8
+#define NL_CLOUD2_STEPS 12
+#define NL_TONEMAP_TYPE 10   // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
+#define NL_CONSTRAST 2.0    // 0.3 low ~ 2.0 high
+#define NL_EXPOSURE 0.7   // [toggle] 0.5 dark ~ 3.0 bright
+#define NL_SATURATION 1.1 // [toggle] 0.0 grayscale ~
+#undef NL_CLOUD_FLUFFY
+#define NL_CLOUD_FLUFFY	 0.4
+#undef NL_CLOUD2_SHAPE 0.41
+#define NL_CLOUD2_SHAPE 0.43
+ #undef NL_SHADOW_SIDES 
+ #define NL_SHADOW_SIDES 0.41
+ #undef NL_GODRAY 0.1
+ #define NL_GODRAY 0.3
 #endif
 
 #ifdef FULL
 #undef NL_CLOUD2_STEPS 8
 #define NL_CLOUD2_STEPS 16
+#undef NL_CLOUD_FLUFFY
+#define NL_CLOUD_FLUFFY	 0.4
+#undef NL_CLOUD2_SHAPE 0.41
+#define NL_CLOUD2_SHAPE 0.8
 #endif
 /* ------ SUBPACK CONFIG STARTS HERE -------- */
 
