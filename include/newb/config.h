@@ -62,7 +62,7 @@
 
 /* Fog */
 #define NL_FOG_TYPE 3             // 0:no fog, 1:vanilla, 2:smoother vanilla 
-#define NL_MIST_DENSITY 1.0     // 0.0: no fog, 1.0: misty
+#define NL_MIST_DENSITY 1.5     // 0.0: no fog, 1.0: misty
 #define NL_RAIN_MIST_OPACITY 1.42// [toggle] 0.04 very subtle ~ 0.5 thick rain mist blow
 
 /* Sky colors - zenith=top, horizon=bottom */
