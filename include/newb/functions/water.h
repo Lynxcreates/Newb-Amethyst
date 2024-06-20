@@ -31,7 +31,7 @@ vec3 wReflection(vec3 viewDir, vec3 wPos, float rainFactor, float t, vec4 FOG_CO
 //adjust 0.5 to ur preference
 #if NL_CLOUD_TYPE == 2
         vec4 clouds = renderClouds(viewDir, reflPos.xyy, rainFactor, t,zenithCol, FOG_COLOR.rgb );
-        wRefl = mix(wRefl, 0.3*clouds.rgb, clouds.a*fade);
+        wRefl = mix(wRefl, 0.4*clouds.rgb, clouds.a*fade);
 #elif NL_CLOUD_TYPE == 1
         vec4 clouds = renderCloudsSimple(reflPos.xyy, t, rainFactor, zenithCol, horizonCol, horizonEdgeCol);
         wRefl = mix(wRefl, NL_WATER_CLOUD_REFL*clouds.rgb, clouds.a*fade);
