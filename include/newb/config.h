@@ -31,9 +31,9 @@
 
 /* Color correction */
 #define NL_TONEMAP_TYPE 4   // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
-#define NL_CONSTRAST 0.8    // 0.3 low ~ 2.0 high
-#define NL_EXPOSURE 1.11   // [toggle] 0.5 dark ~ 3.0 bright
-#define NL_SATURATION 1.2 // [toggle] 0.0 grayscale ~ 4.0 super saturated
+#define NL_CONSTRAST 0.5    // 0.3 low ~ 2.0 high
+#define NL_EXPOSURE 1.1   // [toggle] 0.5 dark ~ 3.0 bright
+//#define NL_SATURATION 1.2 // [toggle] 0.0 grayscale ~ 4.0 super saturated
 //#define NL_TINT vec3(0.851,0.914,1.0) // [toggle] color overlay
 
 /* Terrain lighting */
@@ -165,7 +165,7 @@
 //#define NL_ENDSKY_TYPE  2
 //#define SUN_BLOOM
 /* -------- CONFIG ENDS HERE ----------- */
-#define NL_SHADOW_SIDES 0.5
+#define NL_SHADOWSIDES 0.5
 /*
   EDITING CONFIG FOR SUBPACKS:
   
@@ -176,70 +176,46 @@
   subpack names and flags are inside pack_config.sh.
   pack.sh will enable corresponding flags when compiling. 
 */
-#ifdef R
-#undef NL_GROUND_REFL 0.0       // [toggle] 0.2 
-#define NL_GROUND_REFL 1.2      // [toggle] 0.2 
-//#define NL_WATER_CLOUD_REFLECTION 0.5
-#undef NL_AURORA_VELOCITY 0.03
-#define NL_AURORA_VELOCITY 0.3
-//#undef NL_CLOUD_TYPE 
-//#define NL_CLOUD_TYPE 1
-#endif
-#ifdef HORROR
-#undef NL_CLOUD2_STEPS 8
-#define NL_CLOUD2_STEPS 12
+
+#ifdef AESTHETIC
 #undef NL_TONEMAP_TYPE 4   // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
-#undef NL_CONSTRAST 0.8    // 0.3 low ~ 2.0 high
-#undef NL_EXPOSURE 1.11   // [toggle] 0.5 dark ~ 3.0 bright
-#undef NL_SATURATION 1.2 // [toggle] 0.0 grayscale ~
-#define NL_TONEMAP_TYPE 4   // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
-#define NL_CONSTRAST 1.0    // 0.3 low ~ 2.0 high
-#define NL_EXPOSURE 1.3   // [toggle] 0.5 dark ~ 3.0 bright
-#define NL_SATURATION 1.3 // [toggle] 0.0 grayscale ~  
-#undef NL_OVERWORLD_TORCH_COL
-#define NL_OVERWORLD_TORCH_COL  vec3(1.000, 0.682, 0.271)
-#undef NL_CLOUD_FLUFFY
-#define NL_CLOUD_FLUFFY	 0.4
-#undef NL_CLOUD2_SHAPE 0.41
-#define NL_CLOUD2_SHAPE 0.5
-#undef NL_SHADOW_SIDES 0.3
-#define NL_SHADOW_SIDES 0.3
-#endif
-#ifdef FANTASY
-#undef NL_TORCH_INTENSITY 1.08
-#define NL_TORCH_INTENSITY 1.6
-//#undef NL_OVERWORLD_TORCH_COL
-//#define NL_OVERWORLD_TORCH_COL    
-#undef NL_TONEMAP_TYPE 4   // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
-#undef NL_CONSTRAST 0.8    // 0.3 low ~ 2.0 high
-#undef NL_EXPOSURE 1.11   // [toggle] 0.5 dark ~ 3.0 bright
-#undef NL_SATURATION 1.2 // [toggle] 0.0 grayscale ~ 
-//#undef NL_CLOUD2_SHAPE 0.0
-//#define NL_CLOUD2_SHAPE 0.9
-#undef NL_CLOUD2_STEPS 8
-#define NL_CLOUD2_STEPS 12
-#define NL_TONEMAP_TYPE 10   // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
-#define NL_CONSTRAST 2.0    // 0.3 low ~ 2.0 high
-#define NL_EXPOSURE 0.7   // [toggle] 0.5 dark ~ 3.0 bright
-#define NL_SATURATION 1.1 // [toggle] 0.0 grayscale ~
-#undef NL_CLOUD_FLUFFY
-#define NL_CLOUD_FLUFFY	 0.4
-#undef NL_CLOUD2_SHAPE 0.41
-#define NL_CLOUD2_SHAPE 0.43
- #undef NL_SHADOW_SIDES 
- #define NL_SHADOW_SIDES 0.41
- #undef NL_GODRAY 0.1
- #define NL_GODRAY 0.3
+#undef NL_CONSTRAST 0.5    // 0.3 low ~ 2.0 high
+#undef NL_EXPOSURE 1.1   // [toggle] 0.5 dark ~ 3.0 
+#undef NL_MIST_DENSITY 1.0
+
+#define NL_MIST_DENSITY 6.0
+#define NL_TONEMAP_TYPE 9   // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
+#define NL_CONSTRAST 0.5    // 0.3 low ~ 2.0 high
+#define NL_EXPOSURE 0.9   // [toggle] 0.5 dark ~ 3.0 
 #endif
 
-#ifdef FULL
+
+
+#ifdef CHILL
 #undef NL_CLOUD2_STEPS 8
-#define NL_CLOUD2_STEPS 16
+#undef NL_TONEMAP_TYPE 4   // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
+#undef NL_CONSTRAST 0.8    // 0.3 low ~ 2.0 high
+#undef NL_EXPOSURE 0.6   // [toggle] 0.5 dark ~ 3.0 bright
+#undef NL_SATURATION 1.2 // [toggle] 0.0 grayscale ~
+#undef NL_OVERWORLD_TORCH_COL
 #undef NL_CLOUD_FLUFFY
-#define NL_CLOUD_FLUFFY	 0.4
 #undef NL_CLOUD2_SHAPE 0.41
-#define NL_CLOUD2_SHAPE 0.8
+#undef NL_SHADOW_SIDES 0.3
+#undef NL_MIST_DENSITY 1.0	
+
+#define NL_CLOUD2_STEPS 12
+#define NL_TONEMAP_TYPE 6  // 1:Exponential, 2:Reinhard, 3:Extended Reinhard, 4:ACES
+#define NL_CONSTRAST 1.0    // 0.3 low ~ 2.0 high
+#define NL_EXPOSURE 0.75   // [toggle] 0.5 dark ~ 3.0 bright
+#define NL_SATURATION 0.8 // [toggle] 0.0 grayscale ~  
+#define NL_OVERWORLD_TORCH_COL  vec3(1.000, 0.682, 0.271)
+#define NL_CLOUD_FLUFFY	 0.4
+#define NL_CLOUD2_SHAPE 0.5
+#define NL_SHADOW_SIDES 0.3
+#define NL_MIST_DENSITY 1.4
 #endif
+
+
 /* ------ SUBPACK CONFIG STARTS HERE -------- */
 
 /* ------ SUBPACK CONFIG ENDS HERE -------- */
