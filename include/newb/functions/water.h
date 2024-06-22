@@ -5,6 +5,7 @@
 #include "sky.h"
 #include "clouds.h"
 #include "noise.h"
+#include "terrain.h"
 
 // fresnel - Schlick's approximation
 float calculateFresnel(float cosR, float r0) {
