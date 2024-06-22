@@ -19,5 +19,5 @@
 #include "functions/rain.h"
 #include "functions/wave.h"
 #include "functions/glow.h"
-
+#include  "functions/terrain.h"
 #endif
