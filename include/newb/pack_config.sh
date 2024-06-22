@@ -8,24 +8,18 @@ DEFAULT_MATERIALS="RenderChunk Clouds Sky EndSky LegacyCubemap Actor SunMoon"
 #  NAMES     = Names/descriptions for options
 #  MATERIALS = Materials to compile for options
 SUBPACK_OPTIONS=(
-  FANTASY
-  HORROR
-  FULL
-  R
+  AESTHETIC
+  CHILL
   DEFAULT
 )
 SUBPACK_NAMES=(
-  "Fantasy"
-  "Horror"
- "Full"
-  "R"
+  "Aesthetic"
+  "Chill"
   "Default"
 )
 SUBPACK_MATERIALS=(
   "RenderChunk ; Clouds ;  Sky ; EndSky ; LegacyCubemap"
   "RenderChunk ; Clouds ;  Sky ; EndSky ; LegacyCubemap"
-  "Clouds"
-  "RenderChunk ; Sky"
   ""
 )
 
