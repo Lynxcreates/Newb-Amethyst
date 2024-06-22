@@ -20,7 +20,7 @@ float nlRenderFogFade(float relativeDist, vec3 FOG_COLOR, vec2 FOG_CONTROL) {
     fade = smoothstep(FOG_CONTROL.x, FOG_CONTROL.y, relativeDist);
   } else if (NL_FOG_TYPE == 3) {
     // exponential fog
-    float fogDensity = 0.32; // Adjust this value for denser or lighter fog
+    float fogDensity = 0.42; // Adjust this value for denser or lighter fog
       fade = smoothstep(FOG_CONTROL.x, FOG_CONTROL.y, relativeDist);
     fade = 1.0 - exp(-relativeDist * fogDensity);
   }
@@ -60,9 +60,7 @@ float nlRenderGodRayIntensity(vec3 cPos, vec3 worldPos, float t, vec2 uv1, float
     // Apply a smoother step function to the volumetric intensity
     vol = smoothstep(0.0, 0.1, vol);
     vol = smoothstep(0.0, 1.0, vol);
-    vol = smoothstep(0.0, 0.1, vol);
-    vol = smoothstep(0.0, 0.1, vol);
-    vol = smoothstep(0.0, 0.1, vol);// Additional smoothing step
+    
 
     return vol;
 }
