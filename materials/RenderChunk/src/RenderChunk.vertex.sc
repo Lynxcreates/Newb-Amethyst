@@ -1,8 +1,10 @@
+// vertex.glsl
+
 $input a_color0, a_position, a_texcoord0, a_texcoord1
 #ifdef INSTANCING
   $input i_data0, i_data1, i_data2, i_data3
 #endif
-$output v_color0, v_color1, v_fog, v_refl, v_texcoord0, v_lightmapUV, v_extra
+$output v_color0, v_color1, v_fog, v_refl, v_texcoord0, v_lightmapUV, v_extra, v_worldPos, v_viewDir
 
 #include <bgfx_shader.sh>
 #include <newb/main.sh>
@@ -21,6 +23,7 @@ void main() {
 #endif
 
   vec3 worldPos = mul(model, vec4(a_position, 1.0)).xyz;
+  v_worldPos = worldPos;
 
 #ifdef RENDER_AS_BILLBOARDS
   worldPos += vec3(0.5,0.5,0.5);
@@ -28,6 +31,7 @@ void main() {
   vec3 modelCamPos = (ViewPositionAndTime.xyz - worldPos);
   float camDis = length(modelCamPos);
   vec3 viewDir = modelCamPos / camDis;
+  v_viewDir = viewDir;
 
   vec3 boardPlane = normalize(vec3(-viewDir.z, 0.0, viewDir.x));
   worldPos -= (((viewDir.zxy * boardPlane.yzx) - (viewDir.yzx * boardPlane.zxy)) *
@@ -38,6 +42,7 @@ void main() {
   vec3 modelCamPos = (ViewPositionAndTime.xyz - worldPos);
   float camDis = length(modelCamPos);
   vec3 viewDir = modelCamPos / camDis;
+  v_viewDir = viewDir;
 
   vec4 color = a_color0;
 #endif
