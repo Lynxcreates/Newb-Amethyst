@@ -50,42 +50,7 @@ vec3 colorCorrection(vec3 col) {
     #elif NL_TONEMAP_TYPE == 9
         // Reinhard Extended (modified) tonemap
         col = col * (1.0 + col * 0.2) / (1.0 + col);
-    #elif NL_TONEMAP_TYPE == 11
-        // Custom
-
-        // Exposure adjustment
-        col *= NL_EXPOSURE;
-
-        /
-        col = col / (col + vec3(1.0));
-
-        // Optional:
-        col = pow(col, vec3_splat(NL_CONSTRAST));
-
-       
-        col = pow(col, vec3(1.0 / 2.2));
-
-        // Optional: 
-      //  col = mix(vec3_splat(dot(col, vec3(0.21, 0.71, 0.08))), col, NL_SATURATION);
-
-       
-        col *= NL_TINT;
-
-              col = clamp(col, 0.0, 1.0);
-
-        // Exposure compensation (inverse)
-        col /= NL_EXPOSURE;
-
-        // Gamma correction for linear output
-        col = pow(col, vec3(2.2));
-
-        // Apply inverse Reinhard for proper scaling
-        col *= (col + vec3(1.0)) / col;
-
-        // Clamp again to ensure no overflow
-        col = clamp(col, 0.0, 1.0);
     #endif
-
     // Gamma correction + contrast
     col = pow(col, vec3_splat(NL_CONSTRAST));
 
