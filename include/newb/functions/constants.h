@@ -3,6 +3,7 @@
 
 #define NL_CONST_PI_HALF 1.570796
 #define NL_CONST_PI_QUART 0.785398
-#define NL_CONST_PI 3.14159265
+#define PI 3.14159265359
+#define NL_CONST_PI 3.14159265359
+
 #endif
-    
