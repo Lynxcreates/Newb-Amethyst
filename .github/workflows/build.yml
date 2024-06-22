@@ -55,7 +55,7 @@ jobs:
           ${{ github.workspace }}/env
           ${{ github.workspace }}/data
     - run: ./setup.sh
-    - run: ./build.sh -p iOS
+    - run: ./build.sh -p Windows
     - uses: actions/upload-artifact@v4
       with:
         name: newb-x-ios-materials
