@@ -65,17 +65,16 @@
 #define NL_MIST_DENSITY 0.18      // 0.0 no mist ~ 1.0 misty
 #define NL_RAIN_MIST_OPACITY 0.12 // [toggle] 0.04 very subtle ~ 0.5 thick rain mist blow
 
-/* Sky colors - zenith=top, horizon=bottom */
 #define NL_DAY_ZENITH_COL    vec3(0.15,0.45,1.0)
-#define NL_DAY_HORIZON_COL   vec3(0.53,0.83,0.93)
+#define NL_DAY_HORIZON_COL   vec3(0.678, 0.855, 1.000)
 #define NL_NIGHT_ZENITH_COL  vec3(0.004,0.024,0.04)
 #define NL_NIGHT_HORIZON_COL vec3(0.01,0.06,0.1)
-#define NL_RAIN_ZENITH_COL   vec3(0.85,0.9,1.0)
-#define NL_RAIN_HORIZON_COL  vec3(1.0,1.0,1.0)
+#define NL_RAIN_ZENITH_COL   vec3(0.063, 0.141, 0.400)
+#define NL_RAIN_HORIZON_COL  vec3(0.224, 0.255, 0.361)
 #define NL_END_ZENITH_COL    vec3(0.08,0.001,0.1)
 #define NL_END_HORIZON_COL   vec3(0.6,0.02,0.6)
-#define NL_DAWN_ZENITH_COL   vec3(0.015,0.045,0.1)
-#define NL_DAWN_HORIZON_COL  vec3(0.9,0.3,0.3)
+#define NL_DAWN_ZENITH_COL   vec3(0.133, 0.294, 0.831)
+#define NL_DAWN_HORIZON_COL  vec3(1.000, 0.467, 0.000)
 #define NL_DAWN_EDGE_COL     vec3(1.0,0.4,0.2)
 
 /* Rainbow */
